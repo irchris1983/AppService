@@ -42,6 +42,9 @@ namespace AppService
 
          app.UseHttpsRedirection();
          app.UseMvc();
+
+         // Turn on CORS. If off applications won't be able to call the service APIs
+         app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
       }
    }
 }
