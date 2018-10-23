@@ -26,6 +26,19 @@ namespace AppService
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+         // Configure CORS
+         services.AddCors(options =>
+         {
+            options.AddPolicy("AllowAll",
+               builder =>
+               {
+                  builder.AllowAnyOrigin();
+                  builder.AllowAnyMethod();
+                  builder.AllowAnyHeader();
+                  builder.AllowCredentials();
+               });
+         });
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
