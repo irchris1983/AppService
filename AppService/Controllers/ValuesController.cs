@@ -4,36 +4,38 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace AppService.Controllers
 {
    [Route("api/[controller]")]
-   //[EnableCors("AllowSpecificOrigin")]
+   [EnableCors("AllowSpecificOrigin")]
    [ApiController]
    public class ValuesController : ControllerBase
    {
-      string _user = "No User logged in";
-
+            
       // GET api/values
       [HttpGet]
       public ActionResult<IEnumerable<string>> Get()
       {
+         Globals.User = "cnn";
          return new string[] { "This is the first value", "Test of API call" };
       }
 
       // PUT api/values/5
       [HttpPut]
-      [Route("setuser/{user}")]
+      [Route("{user}")]
       public void SetUser(string user)
       {
-         Globals.User = user;
+         Globals.User = "dsfsd";
+          
       }
 
       //[HttpGet("getuser/{user}")]
       [HttpGet]
       [Route("getuser")]
-      public string GetUser()
-      {
+      public ActionResult<string> GetUser()
+      {         
          return Globals.User;
       }
 
