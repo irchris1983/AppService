@@ -24,11 +24,10 @@ namespace AppService.Controllers
 
       // PUT api/values/5
       [HttpPut]
-      [Route("{user}")]
+      [Route("setuser/{user}")]
       public void SetUser(string user)
       {
-         Globals.User = "dsfsd";
-          
+         Globals.User = user;
       }
 
       //[HttpGet("getuser/{user}")]
