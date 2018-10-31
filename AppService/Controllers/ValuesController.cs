@@ -25,11 +25,13 @@ namespace AppService.Controllers
       // PUT api/values/5
       [HttpPut]
       [Route("setuser/{user}")]
+
       public ActionResult SetUser(string user)
       {
          Globals.User = user;
          return Ok();
       }
+           
 
       //[HttpGet("getuser/{user}")]
       [HttpGet]
