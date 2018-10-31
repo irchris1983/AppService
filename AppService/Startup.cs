@@ -28,18 +28,18 @@ namespace AppService
          services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
          // Configure CORS
-         
-         //services.AddCors(options =>
-         //{
-         //   options.AddPolicy("AllowAll",
-         //      builder =>
-         //      {
-         //         builder.AllowAnyOrigin();
-         //         builder.AllowAnyMethod();
-         //         builder.AllowAnyHeader();
-         //         builder.AllowCredentials();
-         //      });
-         //});
+
+         services.AddCors(options =>
+         {
+            options.AddPolicy("AllowAll",
+               builder =>
+               {
+                  builder.AllowAnyOrigin();
+                  builder.AllowAnyMethod();
+                  builder.AllowAnyHeader();
+                  builder.AllowCredentials();
+               });
+         });
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,8 +58,8 @@ namespace AppService
          app.UseMvc();
 
          // Turn on CORS. If off applications won't be able to call the service APIs
-         // app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
-         app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+         app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+         
       }
    }
 }

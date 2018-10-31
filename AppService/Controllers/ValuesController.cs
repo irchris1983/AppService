@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 namespace AppService.Controllers
 {
    [Route("api/[controller]")]
-   [EnableCors("AllowSpecificOrigin")]
+   [EnableCors("AllowAll")]
    [ApiController]
    public class ValuesController : ControllerBase
    {
@@ -18,17 +18,17 @@ namespace AppService.Controllers
       [HttpGet]
       public ActionResult<IEnumerable<string>> Get()
       {
-         Globals.User = "cnn";
+         Globals.User = "No User";
          return new string[] { "This is the first value", "Test of API call" };
       }
 
       // PUT api/values/5
       [HttpPut]
-      [Route("{user}")]
-      public void SetUser(string user)
+      [Route("setuser/{user}")]
+      public ActionResult SetUser(string user)
       {
-         Globals.User = "dsfsd";
-          
+         Globals.User = user;
+         return Ok();
       }
 
       //[HttpGet("getuser/{user}")]
